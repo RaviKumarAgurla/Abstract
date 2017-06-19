@@ -1,0 +1,223 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+
+	<style type="text/css">
+		
+		body {
+		background-color: #f4f4f4;
+		color: #5a5656;
+		font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+		font-size: 16px;
+		line-height: 1.5em;
+		}
+		a { text-decoration: none; }
+		h1 { font-size: 1em; }
+		h1, p {
+		margin-bottom: 10px;
+		}
+		strong {
+		font-weight: bold;
+		}
+		.uppercase { text-transform: uppercase; }
+
+		/* ---------- LOGIN ---------- */
+		#login {
+		margin: 100px auto;
+		width: 500px;
+		text-align: center;
+		}
+		form fieldset input[type="text"], input[type="password"], input[type="email"], input[type="file"]{
+		background-color: #e5e5e5;
+		border: none;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		color: #5a5656;
+		font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		height: 50px;
+		outline: none;
+		padding: 0px 10px;
+		width: 500px;
+		-webkit-appearance:none;
+		}
+		form fieldset input[type="submit"] {
+		background-color: #008dde;
+		border: none;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		color: #f4f4f4;
+		cursor: pointer;
+		font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+		height: 50px;
+		text-transform: uppercase;
+		width: 300px;
+		-webkit-appearance:none;
+		}
+		form fieldset a {
+		color: #5a5656;
+		font-size: 10px;
+		}
+		form fieldset a:hover { text-decoration: underline; }
+		.btn-round {
+		background-color: #5a5656;
+		border-radius: 50%;
+		-moz-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		color: #f4f4f4;
+		display: block;
+		font-size: 12px;
+		height: 50px;
+		line-height: 50px;
+		margin: 30px 125px;
+		text-align: center;
+		text-transform: uppercase;
+		width: 50px;
+		}
+		.facebook-before {
+		background-color: #0064ab;
+		border-radius: 3px 0px 0px 3px;
+		-moz-border-radius: 3px 0px 0px 3px;
+		-webkit-border-radius: 3px 0px 0px 3px;
+		color: #f4f4f4;
+		display: block;
+		float: left;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		width: 50px;
+		}
+		.facebook {
+		background-color: #0079ce;
+		border: none;
+		border-radius: 0px 3px 3px 0px;
+		-moz-border-radius: 0px 3px 3px 0px;
+		-webkit-border-radius: 0px 3px 3px 0px;
+		color: #f4f4f4;
+		cursor: pointer;
+		height: 50px;
+		text-transform: uppercase;
+		width: 250px;
+		}
+		.twitter-before {
+		background-color: #189bcb;
+		border-radius: 3px 0px 0px 3px;
+		-moz-border-radius: 3px 0px 0px 3px;
+		-webkit-border-radius: 3px 0px 0px 3px;
+		color: #f4f4f4;
+		display: block;
+		float: left;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		width: 50px;
+		}
+		.twitter {
+		background-color: #1bb2e9;
+		border: none;
+		border-radius: 0px 3px 3px 0px;
+		-moz-border-radius: 0px 3px 3px 0px;
+		-webkit-border-radius: 0px 3px 3px 0px;
+		color: #f4f4f4;
+		cursor: pointer;
+		height: 50px;
+		text-transform: uppercase;
+		width: 250px;
+		}
+		
+	</style>
+	
+	<script type="text/javascript"> 
+		
+	/*function notempty(){
+	var x=document.forms["form1"]["password"].value;
+	var y=document.forms["form1"]["cpassword"].value;
+	var z=document.forms["form1"]["first"].value;
+	var m=document.forms["form1"]["last"].value;
+	var r=document.forms["form1"]["Email"].value;
+	if(x==" "||y==""||z==""||m==""||r==""){
+		alert("Fill all inputs");
+		return false;
+		
+	}
+}*/
+
+function validate(){
+	var x = document.forms["form1"]["password"].value; 
+	var y=/[A-Z|a-z]{2,8}[0-9$@.]/;
+	if(!x.match(y)){
+		alert("Please include characters,numbers and alphabets in password");
+		var x = document.forms["form1"]["password"].value=""; 
+		document.getElementById("password").blur();
+		return false;
+	}
+	
+}
+function matching(){
+	var x=document.forms["form1"]["password"].value;
+	var y=document.forms["form1"]["cpassword"].value;
+	if(x!=y){
+		alert("password not matched");
+		 document.forms["form1"]["cpassword"].value=""; 
+		//document.getElementById("cpassword").blur();
+		return false;
+	}
+}
+
+		function check(){
+			var x = document.getElementsByName("username").length;
+			if(x < 6)
+				{
+					
+					//alert("Username Should have atleast 6 characters");
+					document.getElementsByName("username").innerHTML="";
+				}
+		}
+		
+	
+	</script>
+	
+</head>
+	
+<body>
+	
+	<div id="login">
+		
+		<h1><strong>Please Fill in the Details</strong></h1>
+		
+		<form  method="post" action="http:\\localhost:8080\project\ackg" enctype="multipart/form-data" name="form1">
+		
+			<fieldset>
+
+				<p><input type="text" required name="username" autofocus onblur="check()" maxlength="16" placeholder="username"></p>
+	
+				<p><input type="password"  onblur="validate()" placeholder="password" required id="password" name="password"></p>
+				
+				<p><input type="password" id="cpassword" onblur="matching()" placeholder="Re-Enter password" required </p>
+					
+				<p><input type="email" id="email" name="email" placeholder="E-mail ID" required ></p>
+						
+				<p><input type="file" accept="image" name="photo"></p>
+
+				<p><input type="submit" value="Submit" ></p>
+
+			</fieldset>
+			
+		</form>
+<!-- <p><span class="btn-round">or</span></p>
+<p>
+<a class="facebook-before"></a>
+<button class="facebook">Login Using Facbook</button>
+</p>
+<p>
+<a class="twitter-before"></a>
+<button class="twitter">Login Using Twitter</button>
+</p>
+	-->
+	</div> <!-- end login -->
+	
+</body>
+</html>
